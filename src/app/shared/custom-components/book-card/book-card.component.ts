@@ -1,12 +1,7 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { MovieModel } from "../../models/movie.model";
-import { ActivatedRoute, Router } from "@angular/router";
-import { MatDialog } from "@angular/material/dialog";
-import { ApproveDialogComponent } from "../approve-dialog/approve-dialog.component";
-import { JsonServerService } from "../../services/json-server.service";
-import { SnackBarService } from '../../services/snackbar.service';
-import { Subject, takeUntil } from "rxjs";
-import {BooksModel} from "../../models/books.model";
+import { Router } from "@angular/router";
+import { Subject } from "rxjs";
+import { BooksModel } from "../../models/books.model";
 
 
 @Component({
@@ -21,11 +16,13 @@ export class BookCardComponent implements OnInit, OnDestroy {
   @Input() book!: BooksModel;
 
   getBookDetails(id: string) {
-    this.router.navigate(['/books', id]);
+    if(id) {
+      this.router.navigate(['/books', id]);
+    }
   }
 
 
-  constructor(public dialog: MatDialog, private router: Router,) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }

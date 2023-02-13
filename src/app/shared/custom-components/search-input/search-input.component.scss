@@ -1,14 +1,42 @@
 .example-form {
   min-width: 344px;
-  max-width: 64px;
-  width: 100%;
+  max-width: 100%;
+  width: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 5px;
+
+}
+::ng-deep  .mat-form-field-label{
+  color: #46877f !important;
+}
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-underline{
+    &::before{
+    background-color: #46877f;
+  }
 }
 
+::ng-deep .mat-form-field-ripple{
+
+    background-color: #529f95 !important;
+
+}
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-infix{
+  margin-left: 10px;
+}
+
+::ng-deep{
+  .mat-form-field-appearance-fill .mat-form-field-flex{
+    background-color: #f6ffdb;
+    box-shadow: 0 0 12px 1px #46877f;
+  }
+}
 .example-full-width {
   width: 100%;
+  img{
+    width: 20px;
+  }
   input {
     width: 100%;
   }

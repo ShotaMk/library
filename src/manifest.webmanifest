@@ -1,6 +1,6 @@
 {
-  "name": "movie-db-app",
-  "short_name": "movie-db-app",
+  "name": "book-shell-app",
+  "short_name": "book-shell-app",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",

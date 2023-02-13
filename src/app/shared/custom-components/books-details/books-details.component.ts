@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { MovieModel } from "../../models/movie.model";
 import { ApiService } from "../../services/api.service";
 import { Subject, switchMap, takeUntil, tap } from "rxjs";
+import { BooksModel } from "../../models/books.model";
 
 @Component({
   selector: 'app-movies-details',
@@ -15,21 +15,30 @@ export class BooksDetailsComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
 
 
-  movie!: MovieModel;
-  genres!: string;
+  book: BooksModel | undefined;
+  authors!: string;
+  categories!: string;
 
-  id: number = 0
+  id: string = '';
 
   ngOnInit(): void {
     this.route.params.pipe(
       takeUntil(this.destroy$),
       tap(params => this.id = params['id']),
-      switchMap(() => this.apiService.getMovieDetails(this.id)),
+      switchMap(() => this.apiService.getBookByTitle(this.id)),
       tap(data => {
-        this.movie = data;
-        data.genres.forEach(item => {
-          this.genres = this.genres ? this.genres + ', ' + item.name : item.name;
-        })
+        this.book = data;
+        if(data.volumeInfo.authors) {
+          data.volumeInfo.authors.forEach(item => {
+            this.authors = this.authors ? this.authors + ', ' + item : item;
+          })
+        }
+        if(data.volumeInfo.categories) {
+          data.volumeInfo.categories.forEach(item => {
+            this.categories = this.categories ? this.categories + ', ' + item : item;
+          })
+        }
+
       })
     ).subscribe()
   }

@@ -1,47 +1,56 @@
-<section class="details">
+<app-header></app-header>
+<section class="details" *ngIf="book">
   <div class="details-header">
-    <div class="banner-image">
-      <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path">
-    </div>
     <div class="header-container">
       <div class="breadcrumbs">
-        <a routerLink="">MaileHereko</a>
+        <a routerLink="">Library</a>
         <p> / </p>
-        <a routerLink="/movies">Movies</a>
+        <a routerLink="/">Books</a>
       </div>
-      <h1 class="title">{{movie.original_title}}</h1>
+      <h1 class="title"
+      *ngIf="book.volumeInfo.title">{{book.volumeInfo.title}}</h1>
     </div>
   </div>
   <div class="details-wrapper">
     <div class="poster-wrapper">
-      <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
+      <img [src]="book.volumeInfo.imageLinks.thumbnail">
     </div>
     <div class="details-container">
-      <div class="details-container__header">
-        {{movie.tagline}}
+      <div class="details-container__block authors-block"
+      *ngIf="authors">
+        <p class="label">Authors: </p>
+        <p class="value">{{authors}}</p>
       </div>
-      <div class="details-container__overview">
-        {{movie.overview}}
+      <div class="details-container__block date-block"
+      *ngIf="book.volumeInfo.publishedDate">
+        <p class="label">Publish Date: </p>
+        <p class="value">{{book.volumeInfo.publishedDate}}</p>
       </div>
-      <div class="details-container__rating">
-        <img src="assets/card/star.svg" alt="Name of movie">
-        <p>{{movie.vote_average.toFixed(1)}}</p>
+      <div class="details-container__block page-block"
+      *ngIf="book.volumeInfo.pageCount">
+        <p class="label">Page count: </p>
+        <p class="value">{{book.volumeInfo.pageCount}}</p>
       </div>
-      <div class="details-container__block">
-        <p class="label">Type</p>
-        <p class="value">Movie</p>
+      <div class="details-container__block category-block"
+      *ngIf="book.volumeInfo.categories">
+        <p class="label">Categories: </p>
+        <p class="value">{{book.volumeInfo.categories}}</p>
       </div>
-      <div class="details-container__block">
-        <p class="label">Release Date:</p>
-        <p class="value">{{movie.release_date}}</p>
+      <div class="details-container__block publisher-block"
+      *ngIf="book.volumeInfo.publisher">
+        <p class="label">Publisher: </p>
+        <p class="value">{{book.volumeInfo.publisher}}</p>
       </div>
-      <div class="details-container__block">
-        <p class="label">Run time</p>
-        <p class="value">{{movie.runtime}}min</p>
+      <div class="details-container__overview description-block"
+           *ngIf="book.volumeInfo.description">
+        {{book.volumeInfo.description}}
       </div>
-      <div class="details-container__block">
-        <p class="label">Genres</p>
-        <p class="value">{{this.genres}}</p>
+      <div class="details-container__block link-block"
+      *ngIf="book.volumeInfo.infoLink">
+        <p class="label">Link: </p>
+        <a [href]="book.volumeInfo.infoLink"
+           target="_blank"
+        >{{book.volumeInfo.infoLink}}</a>
       </div>
     </div>
   </div>

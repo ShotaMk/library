@@ -1,8 +1,8 @@
-<app-header [navbarType]="'user'"></app-header>
+<app-header></app-header>
 <section class="head-banner">
-  <h1>Library</h1>
-  <p>Enjoy reading in our library!😉</p>
+  <div class="book-info-block">
   <app-search-input (searchValue)="getSearchValue($event)"></app-search-input>
+
   <div class="toggle-book">
     <button mat-raised-button class="toggle-btn"  (click)="toggleCards('All')">All</button>
     <button mat-raised-button class="toggle-btn"  (click)="toggleCards('History')">History</button>
@@ -11,9 +11,12 @@
     <button mat-raised-button class="toggle-btn" (click)="toggleCards('Psychology')">Psychology</button>
     <button mat-raised-button class="toggle-btn" (click)="toggleCards('Fantasy')">Fantasy</button>
   </div>
+  </div>
   <div class="books-grid-count">
     {{titleCount}} <span>({{gridDataCount}})</span>
   </div>
+
+
 </section>
 <section class="books-grid">
   <book-card *ngFor="let book of gridDataBooks | async | search: searchValue"

@@ -41,7 +41,6 @@ export class HomeComponent extends ApiPageAbstract implements OnInit, OnDestroy 
         }
       }),
       tap(data => {
-        console.log(data);
         this.gridDataCount = data.length;
       })
     );

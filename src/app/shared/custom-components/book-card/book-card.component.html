@@ -1,10 +1,12 @@
 <div class="card">
   <div class="card-content">
-    <a class="card-image">
+    <a class="card-image"
+       *ngIf="book.volumeInfo.imageLinks.thumbnail">
       <img [src]="book.volumeInfo.imageLinks.thumbnail"
       [alt]="book.volumeInfo.title">
     </a>
-    <div class="card-info">
+    <div class="card-info"
+    *ngIf="book.volumeInfo.title">
       <a (click)="getBookDetails(book.id)">{{ book.volumeInfo.title }}</a>
     </div>
   </div>

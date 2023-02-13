@@ -1,12 +1,23 @@
 .custom-header {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   padding: 16px 120px;
   width: 100%;
-  background: #f6ffdb;
-  backdrop-filter: blur(20px);
+  background: transparent;
+  backdrop-filter: blur(50px);
+  .header-text{
+    color: #46877f;
+    margin-left: 10px;
+  }
+  .site-name{
+    font-size: 32px;
+    font-weight: 700;
+  }
+  .site-text{
+    font-size: 18px;
+  }
   .custom-header__logo{
     width: 150px;
     img{
