@@ -7,4 +7,10 @@
   width: 100%;
   background: #f6ffdb;
   backdrop-filter: blur(20px);
+  .custom-header__logo{
+    width: 150px;
+    img{
+      max-width: 100%;
+    }
+  }
 }

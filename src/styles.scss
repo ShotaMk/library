@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+.container{
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+}
 
 body {
   background-size: 100%;
